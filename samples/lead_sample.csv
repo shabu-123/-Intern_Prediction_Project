@@ -1,0 +1,14 @@
+﻿Age,Course,Lead Source,Total Visits,Last Activity,Country,City,Occupation,Tags,Lead Quality,Page Views Per Visit,Engagement Score,Qualification,Lead Interest Level,Days Since Last Interaction,Course Fee Offered,Potential Score,Log Time Spent on Website,Interaction Time-Hour
+26,Data Science,Social Media,29,Visited Website,Canada,Sydney,Student,Interested,Medium,3.91,14,High School,3,313,2025.482498,87,8.129764446,54288
+47,Cybersecurity,Social Media,29,No Response,Canada,Toronto,Working Professional,Not Interested,Medium,3.95,81,High School,5,107,733.0579857,145,4.304065093,876
+28,Cloud Computing,Social Media,8,Clicked Ad,Australia,London,Entrepreneur,Interested,High,3.26,73,PhD,2,37,2093.898988,16,8.248267447,61120
+48,MERN Stack,Webinar,3,Email Opened,Canada,New York,Entrepreneur,Needs More Info,Low,3.25,83,Postgraduate,5,358,4768.412545,15,8.369620827,43130
+56,Cloud Computing,Webinar,8,Form Submitted,USA,New York,Entrepreneur,High Priority,Low,1.17,15,Graduate,3,172,3272.637784,24,8.209036266,7346
+41,Cloud Computing,Website,29,No Response,USA,Sydney,Unemployed,Will Contact Later,Low,4.13,3,Postgraduate,1,275,2994.81401,29,8.16820293,63468
+47,Data Analytics,Webinar,12,Form Submitted,Australia,Sydney,Entrepreneur,Not Interested,Low,3.11,13,PhD,3,165,3842.092009,36,6.561030666,11296
+44,MERN Stack,Webinar,15,No Response,USA,Mumbai,Unemployed,Interested,High,4.87,23,Undergraduate,3,188,1556.780807,45,7.055312843,1158
+52,AI & ML,Social Media,6,Email Opened,Australia,Mumbai,Entrepreneur,High Priority,Medium,2.26,15,Undergraduate,5,99,3627.146205,30,6.263398263,8384
+44,Python Fullstack,Social Media,28,Form Submitted,USA,New York,Unemployed,Will Contact Later,High,3.12,19,Graduate,5,141,2880.723308,140,7.334981879,15320
+52,AI & ML,Social Media,20,No Response,USA,London,Entrepreneur,Needs More Info,Low,3.86,6,Graduate,4,15,5107.355283,80,8.110427238,59904
+21,Python Fullstack,Email Campaign,13,No Response,Canada,Sydney,Student,High Priority,High,1.72,72,PhD,4,193,2937.158889,52,7.156176637,24339
+41,Data Analytics,Social Media,24,Form Submitted,Australia,London,Working Professional,Not Interested,Medium,4.82,80,PhD,2,153,5105.639192,48,8.064950892,38160

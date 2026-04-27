@@ -1,0 +1,13 @@
+﻿Age,Department,Duration of Internship (months),Attendance Rate,Socioeconomic Status,Participation in Projects,Hours Worked per Week,Mentorship Level,Distance from Work (miles),Job Satisfaction,Work-Life Balance Index,Performance Adjusted Score,Socioeconomic-Performance Interaction
+28,Human Resources,3,97.5,High,No,55,Low,0.18,Low,55,3.704317745,11.13
+21,Finance,6,88.46,Low,No,41,High,46.47,High,13.66666667,3.587968917,3.64
+29,Finance,8,80.29,Medium,No,41,Low,29.91,Low,41,2.272912983,4.56
+29,Finance,2,65.97,Low,No,25,Low,9.86,Low,25,3.123133898,3
+29,Human Resources,8,90.45,High,No,34,Low,47.73,Medium,34,3.893377106,11.46
+22,Human Resources,6,97.79,Medium,Yes,25,High,29.44,High,8.333333333,3.21555714,6.1
+25,Finance,2,93.57,Medium,No,38,Medium,4.26,High,19,1.659122,3.32
+26,Human Resources,1,91.26,Medium,Yes,33,Medium,23.23,High,16.5,1.981947469,4.08
+22,Human Resources,2,96.39,High,Yes,22,Medium,42.42,High,11,3.198896565,9.12
+22,Data Science,6,67.68,High,Yes,30,Medium,0.31,Low,15,4.164142726,12.6
+25,Data Science,1,71.93,Medium,Yes,52,Medium,3.53,High,26,1.846011643,3.84
+20,Human Resources,3,61.61,Medium,No,30,Medium,2.7,Low,15,4.883085784,9.54
