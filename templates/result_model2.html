@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Default Light Mode */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffcc00;
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .emoji {
+            font-size: 60px; /* Make the emoji bigger */
+            margin-left: 10px;
+            animation: bounce 1s infinite; /* Add bounce animation */
+        }
+
+        .button {
+            background-color: #20b48c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #17a589;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        h1.dark-mode {
+            color: #ffcc00;
+        }
+
+        h2.dark-mode {
+            color: #fff;
+        }
+
+        .emoji.dark-mode {
+            color: #fff;
+        }
+
+        .button.dark-mode {
+            background-color: #20b48c;
+            color: white;
+        }
+
+        .button.dark-mode:hover {
+            background-color: #17a589;
+        }
+
+        /* Shaking Animation for Button */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Bounce Animation for Emoji */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 50px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .toggle .circle {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle.sun .circle {
+            left: 2px;
+        }
+
+        .toggle.moon .circle {
+            left: 22px;
+        }
+
+        .toggle-label {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        body.dark-mode .container {
+            background: #2c2c2c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-text {
+            color: #333;
+        }
+
+        body.dark-mode .result-text {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-container" id="theme-toggle">
+        <span id="sun-icon" class="toggle-icon">🔆</span>
+        <span id="moon-icon" class="toggle-icon" style="display:none;">🌙</span>
+    </div>
+
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <h2 class="result-text">{{ prediction_text }} <span class="emoji">{{ emoji }}</span></h2> <!-- Display both the prediction and the emoji -->
+        <a href="/model2" class="button">Predict Again</a>
+        
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            sunIcon.style.display = sunIcon.style.display === 'none' ? 'block' : 'none';
+            moonIcon.style.display = moonIcon.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Dark Mode Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #2c2c2c;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffcc00;
+            font-size: 28px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            margin-top: 20px;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: #ff7043;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #e64a19;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        /* Shaking Animation */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Slide In for Result */
+        @keyframes slideIn {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Happy Face Animation */
+        .happy-face {
+            font-size: 100px;
+            text-align: center;
+            animation: bounceHappy 1s infinite;
+            color: #4caf50; /* Green for happiness */
+            display: none;
+        }
+
+        @keyframes bounceHappy {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Sad Face Animation */
+        .sad-face {
+            font-size: 100px;
+            text-align: center;
+            animation: bounceSad 1s infinite;
+            color: #f44336; /* Red for sadness */
+            display: none;
+        }
+
+        @keyframes bounceSad {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Dark Mode Toggle Button */
+        .mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ffcc00;
+            color: #121212;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            background-color: #e64a19;
+        }
+
+        /* Party Confetti Animation */
+        .party-confetti {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: none;
+        }
+
+        .party-confetti.active {
+            display: block;
+            animation: confettiFall 2s infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-50px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Dark Mode Toggle Button with Moon/Sun Icon -->
+        <button class="mode-toggle" id="modeToggleBtn">🌙</button>
+
+        <h2>Lead Conversion Prediction Result</h2>
+        
+        <!-- Party Confetti (hidden initially) -->
+        <div class="party-confetti" id="partyConfetti"></div>
+
+        <!-- Happy or Sad Emoji -->
+        <div id="happyFace" class="happy-face">😊</div>
+        <div id="sadFace" class="sad-face">😞</div>
+
+        <div class="result">
+            <p>The prediction result is: <strong>{{ prediction_text }}</strong></p>
+        </div>
+        
+        <a href="/model1" class="back-button">Predict Again</a>
+        <a href="/" class="back-button">Home</a>
+    </div>
+
+    <script>
+        // Dark Mode Toggle Function
+        let isDarkMode = true;
+        const body = document.body;
+        const container = document.querySelector('.container');
+        const modeToggleBtn = document.getElementById('modeToggleBtn');
+
+        // Function to toggle dark and light mode
+        function toggleDarkMode() {
+            if (isDarkMode) {
+                body.style.backgroundColor = "#fff";
+                body.style.color = "#121212";
+                container.style.backgroundColor = "#f9f9f9";
+                container.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
+                modeToggleBtn.textContent = "☀️"; // Sun icon for light mode
+            } else {
+                body.style.backgroundColor = "#121212";
+                body.style.color = "#fff";
+                container.style.backgroundColor = "#2c2c2c";
+                container.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+                modeToggleBtn.textContent = "🌙"; // Moon icon for dark mode
+            }
+            isDarkMode = !isDarkMode;
+        }
+
+        // Set the event listener for the toggle button
+        modeToggleBtn.addEventListener('click', toggleDarkMode);
+
+        // Handle happy or sad face based on prediction result
+        window.onload = function() {
+            var predictionText = "{{ prediction_text }}"; // Fetch prediction result
+            var partyConfetti = document.getElementById('partyConfetti');
+            var happyFace = document.getElementById('happyFace');
+            var sadFace = document.getElementById('sadFace');
+
+            // Check if the result is 'Converted' or 'Not Converted'
+            if (predictionText.toLowerCase() === 'converted') {
+                // Show happy face and party animation for 'Converted'
+                happyFace.style.display = 'block'; // Show happy face
+                sadFace.style.display = 'none'; // Hide sad face
+                partyConfetti.classList.add('active'); // Show party animation
+            } else if (predictionText.toLowerCase() === 'not converted') {
+                // Show sad face for 'Not Converted'
+                happyFace.style.display = 'none'; // Hide happy face
+                sadFace.style.display = 'block'; // Show sad face
+                partyConfetti.classList.remove('active'); // Hide party animation
+            }
+        }
+    </script>
+</body>
+</html>

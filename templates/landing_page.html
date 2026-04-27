@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Selection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ramaraja&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black; /* Start with black background */
+            transition: background-color 2s; /* Transition to default color */
+        }
+
+        .model-selection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        .model {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Ramaraja', serif;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .model:hover {
+            transform: scale(1.1);
+            background-color: #f0f0f0;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 2rem;
+            user-select: none;
+            z-index: 2;
+            animation: snow 10s linear infinite;
+        }
+
+        @keyframes snow {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* Black background for welcome screen */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 300px;
+            z-index: 4;
+            transition: opacity 1s;
+        }
+
+        .welcome-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-screen" id="welcome-screen">Welcome!</div>
+    <!-- Removed Santa Claus -->
+    <div class="model-selection">
+        <a href="/model1" class="model">
+            Lead <br>
+            Conversion<br>
+            Prediction
+        </a>
+        <a href="/model2" class="model">
+            Intern<br>
+            Placement<br>
+            Prediction
+        </a>
+        <a href="/model3" class="model">
+            Intern<br>
+            Attrition<br>
+            Prediction
+        </a>
+    </div>
+    <script>
+        function createSnowflakes() {
+            let snowflakeCount = 50;
+            for (let i = 0; i < snowflakeCount; i++) {
+                let snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(snowflake);
+            }
+        }
+
+        function hideWelcomeScreen() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.classList.add('hidden');
+            document.body.style.backgroundColor = 'red'; // Transition to default background color
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(hideWelcomeScreen, 1000); // Hide after 3 seconds
+            createSnowflakes();
+        });
+    </script>
+</body>
+</html>
